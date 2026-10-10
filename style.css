@@ -1,0 +1,47 @@
+/* 照片分類 Fotofold 支援站。色值 = DESIGN.md §4 chrome token(bg / surface / ink / sub / hairline,light + dark);
+   §2 原則 1:彩色只給分類,這裡只有語言列下面那條五色分類線。系統字,不載入外部字型或任何外部資源。 */
+:root {
+  --bg: #FFF8EE; --surface: #FFFFFF; --ink: #1C1B19; --sub: #6B655C; --hairline: #E6DDCD;
+  --orange: #FF8A3D; --yellow: #FFD23F; --coral: #FF6B6B; --green: #7ED957; --sky: #5EC2F2;
+  --space1: 4px; --space2: 8px; --space3: 12px; --space4: 16px; --space5: 24px; --space6: 32px;
+  --radius: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1B1917; --surface: #26231F; --ink: #F3EDE2; --sub: #A69E92; --hairline: #3A352E; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, system-ui, "PingFang TC", "PingFang SC",
+        "Hiragino Sans", "Apple SD Gothic Neo", "Noto Sans CJK TC", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased; padding: var(--space5) var(--space4) 64px;
+}
+main { max-width: 720px; margin: 0 auto; }
+nav.lang { display: flex; flex-wrap: wrap; gap: var(--space2) var(--space4); font-size: 14px; margin-bottom: var(--space3); }
+nav.lang a[aria-current] { font-weight: 700; border-bottom-color: var(--ink); }
+.stripe { display: flex; height: 6px; border-radius: 3px; overflow: hidden; margin-bottom: var(--space6); }
+.stripe span { flex: 1; }
+h1 { font-size: 30px; line-height: 1.25; font-weight: 800; margin: 0 0 var(--space2); }
+h1 .en { color: var(--sub); font-weight: 500; font-size: 20px; }
+.tagline, .effective { color: var(--sub); margin: 0; font-size: 15px; }
+h2 { font-size: 20px; font-weight: 700; margin: var(--space6) 0 var(--space3); }
+p { margin: var(--space2) 0; }
+ul { padding-left: 22px; margin: var(--space2) 0; }
+li { margin: var(--space1) 0; }
+a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sub); }
+a:hover, a:focus-visible { border-bottom-width: 2px; border-bottom-color: var(--ink); }
+details, .consent { background: var(--surface); border-radius: var(--radius); margin: var(--space3) 0; padding: var(--space3) var(--space4); }
+summary { cursor: pointer; font-weight: 600; }
+details p { color: var(--sub); margin-bottom: 0; }
+.consent .label { font-size: 13px; color: var(--sub); margin: 0 0 var(--space2); }
+.consent .summary p { margin: 0 0 var(--space2); }
+.consent dl { display: grid; grid-template-columns: max-content 1fr; gap: var(--space2) var(--space4); margin: var(--space3) 0 0; padding-top: var(--space3); border-top: 1px solid var(--hairline); }
+.consent dt { color: var(--sub); font-weight: 600; }
+.consent dd { margin: 0; }
+footer { margin-top: var(--space6); padding-top: var(--space5); border-top: 1px solid var(--hairline); color: var(--sub); font-size: 14px; }
+@media (max-width: 480px) {
+  body { padding: var(--space4) var(--space3) 48px; }
+  h1 { font-size: 26px; }
+  .consent dl { grid-template-columns: 1fr; gap: 0 0; }
+  .consent dd { margin-bottom: var(--space2); }
+}
